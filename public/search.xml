@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>把 developerFolio 里的build文件夹发布到my-website的gh-pages 分支</title>
+      <link href="/post/2fbd.html"/>
+      <url>/post/2fbd.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr><h1 id="把-developerFolio-里的build文件夹发布到my-website的gh-pages-分支"><a href="#把-developerFolio-里的build文件夹发布到my-website的gh-pages-分支" class="headerlink" title="把 developerFolio 里的build文件夹发布到my-website的gh-pages 分支"></a>把 developerFolio 里的build文件夹发布到my-website的gh-pages 分支</h1><p>如果您希望将 <code>build</code> 文件夹的内容发布到 <code>my-website</code> 仓库的 <code>gh-pages</code> 分支，以下是具体步骤：</p><h3 id="步骤-1-克隆-my-website-仓库"><a href="#步骤-1-克隆-my-website-仓库" class="headerlink" title="步骤 1: 克隆 my-website 仓库"></a>步骤 1: 克隆 <code>my-website</code> 仓库</h3><p>如果您还没有克隆 <code>my-website</code> 仓库，请先克隆它：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/&lt;username&gt;/my-website.git</span><br><span class="line"><span class="built_in">cd</span> my-website</span><br></pre></td></tr></table></figure><h3 id="步骤-2-生成-build-文件夹"><a href="#步骤-2-生成-build-文件夹" class="headerlink" title="步骤 2: 生成 build 文件夹"></a>步骤 2: 生成 <code>build</code> 文件夹</h3><p>在您的 <code>developerFolio</code> 仓库中，生成最新的 <code>build</code> 文件夹：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> path/to/developerFolio</span><br><span class="line">npm run build</span><br></pre></td></tr></table></figure><h3 id="步骤-3-切换到-gh-pages-分支"><a href="#步骤-3-切换到-gh-pages-分支" class="headerlink" title="步骤 3: 切换到 gh-pages 分支"></a>步骤 3: 切换到 <code>gh-pages</code> 分支</h3><p>进入 <code>my-website</code> 仓库并切换到 <code>gh-pages</code> 分支。如果该分支不存在，请创建它：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> path/to/my-website</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果 gh-pages 分支已经存在</span></span><br><span class="line">git checkout gh-pages</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果 gh-pages 分支不存在，创建它</span></span><br><span class="line">git checkout -b gh-pages</span><br></pre></td></tr></table></figure><h3 id="步骤-4-清空-gh-pages-分支中的所有文件"><a href="#步骤-4-清空-gh-pages-分支中的所有文件" class="headerlink" title="步骤 4: 清空 gh-pages 分支中的所有文件"></a>步骤 4: 清空 <code>gh-pages</code> 分支中的所有文件</h3><p>注意，这将删除分支中的所有文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">rm</span> -rf .</span><br></pre></td></tr></table></figure><h3 id="步骤-5-将-build-文件夹的内容复制到-gh-pages-分支"><a href="#步骤-5-将-build-文件夹的内容复制到-gh-pages-分支" class="headerlink" title="步骤 5: 将 build 文件夹的内容复制到 gh-pages 分支"></a>步骤 5: 将 <code>build</code> 文件夹的内容复制到 <code>gh-pages</code> 分支</h3><p>将 <code>build</code> 文件夹的内容复制到当前目录：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> -r ../developerFolio/build/* .</span><br></pre></td></tr></table></figure><h3 id="步骤-6-提交并推送更改到-gh-pages-分支"><a href="#步骤-6-提交并推送更改到-gh-pages-分支" class="headerlink" title="步骤 6: 提交并推送更改到 gh-pages 分支"></a>步骤 6: 提交并推送更改到 <code>gh-pages</code> 分支</h3><ol><li><p>添加所有更改：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure></li><li><p>提交更改：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;Deploy build folder to gh-pages&quot;</span></span><br></pre></td></tr></table></figure></li><li><p>推送更改到远程仓库的 <code>gh-pages</code> 分支：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin gh-pages --force</span><br></pre></td></tr></table></figure></li></ol><h3 id="完整操作示例"><a href="#完整操作示例" class="headerlink" title="完整操作示例"></a>完整操作示例</h3><p>以下是完整的命令示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆 my-website 仓库</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/&lt;username&gt;/my-website.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 developerFolio 仓库并生成 build 文件夹</span></span><br><span class="line"><span class="built_in">cd</span> path/to/developerFolio</span><br><span class="line">npm run build</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 my-website 仓库</span></span><br><span class="line"><span class="built_in">cd</span> path/to/my-website</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换到 gh-pages 分支，如果不存在则创建它</span></span><br><span class="line">git checkout -b gh-pages</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清空分支内容</span></span><br><span class="line">git <span class="built_in">rm</span> -rf .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制 build 文件夹内容到当前目录</span></span><br><span class="line"><span class="built_in">cp</span> -r ../developerFolio/build/* .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有更改</span></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交更改</span></span><br><span class="line">git commit -m <span class="string">&quot;Deploy build folder to gh-pages&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送更改到 gh-pages 分支</span></span><br><span class="line">git push origin gh-pages --force</span><br></pre></td></tr></table></figure><p>通过这些步骤，您可以将 <code>build</code> 文件夹的内容发布到 <code>my-website</code> 仓库的 <code>gh-pages</code> 分支。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>影子练习法(Shadowing)</title>
+      <link href="/post/39da.html"/>
+      <url>/post/39da.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>分享一个练习口语的方法–影子练习法</p><p>Step 1: blind shadowing – just listen and repeat</p><p>Step 2: shadowing shadowing – look at teaching language(like Chinese) and say target language(like English) </p><p>Step 3: look at both sides of language, more on teaching language and then  focus on target language</p><p>Step 4: look at both sides of language, but more on target language</p><p>Step 5: look at target language, think in target language way, and speak target language.</p><p>Step 6: Analyze the target language(like Gramma or meaning) without the audio</p><p>Step 7: Writing the text down , print it and  go over it.</p><p>Step 8 Can play the audio when doing other things.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 口语 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>怦然心动</title>
+      <link href="/post/46a9.html"/>
+      <url>/post/46a9.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="c19b722d9b51be32dea5e11133d393f8214a3a80338a729900b19ae0631f6471">b0cd6d9f314ce9cb1ee140b6941aa1aa8f9fbbde12757276c263335794f9e57a536acd27969e103ace75361fc78f4daa2fce10a2ccb41a3b563b8b6319f5ca2900bdb7ed4cec972b0b67610f7f2586df9c22266e04aad8f577de404a08028b650133a6f50b21eed383f93a340a8d97b92953f6d3f031a1d025b8f221a1c07758d98c9161b099d9290f5df54d14c1e9ead46cc850dfbc93a765e3e11d90b34d5fd3f2b6f8cabaf56b2443fda4170abf2cb709a9e1f98eb836d0707f7103ce4811d164b5a78e053a44145a5b253f561bd136793901986a120fd09e6b8e9be7e69eff2aa12307824c5a7f79cc0f896471d7f357682ba91659961527726627e360f2cd9c29f63cc67a553d6f56b182c9651744438fd07c367a8ed8bf7b8d3cad32fb543de6cd4bb02fb5efbe2cde8579ecc55ad562a4a62accfff4c5726996fbfddb157daf46fd43eee6ba650a53129e7fccde02fff40d15046ef14e236633e680b7e5008650842ceec68e0a0250741063464f9f6246ff2bc9086fdd86c296d2e62a3e8a68fee905e4cdc335963b2810086d1aa614d2b35cbc75b55dbcc050178eff2a06f59073635016353be9f52011d4a03eafe7e9f0d72500b109818301cb79c157d753d3e910138b4ee568d4f2512102ed3e3280d04e0e319c8c660b39951ab17e5622bcf000af89dc88550695039816da64a08d3e36b28d988ceacdec99b7fa83e3fd585116b8e03e3936156324d6258bc4f0d57daed37909bfbe476a5680b67bafcf12433f8f805a9d3a5fcd90f43e614604b1b27e801c7f73f8206fb44b66a66d1ec2b6c9ddcf70e8b8efb15bc99723f4c1abee93bcb666aa371dc3ce4448f93e217dacd96da8fe6255fcf3fe8af101458c4066d83cacfbd15672eb906735f1039276153f0b76f3651ec4da7ccf8a88aa46715d82c4c9de7b645667376ff5bc4fc2ed80eda0aeb16e80b964aed909d2c69d6edb5b1f26b729ac4ea09668aa7955af614e4bc013bf0156c015f1c254fb711a462d8fb91354a29d54c3c85e140e31aeaa28ce4c5c5ae4044939c42c7578a6efc638594bc71f3a3a69efe811d8f95fde56276773b5914b0c9cb89cd033207e8db39c2617de9bbd5a0760b9b68410389593a2f092500b83f6dab8567bd59659e8a6a31c71060e54ad078aa4425343699869547a8e15102538faeb0433c9dc5f8516139bed6b6345534e3a5eb66a28946fb2fd845a3d9a76579a8a1541ff88679e87c30f71784940b2fef34d7096f1800c193c19b1ca6d9986391ad00b26675e9e7fcc047a9925a597bd8c554880ffc257eea508d2fc04e04c97080cfcc7160f1d78794ecaa0b43d793dbcc22fe7209149f1ddfda9f5aa20c2260f057f2492c2aa9150fbca42c48fde4464e747091810fe48a2c30bdd34220b90b7dd359cc8ed67ab9a098c534f222923141faf876345a4ae2f62676697826fc058e034a172c20a23b6eaca53ee00aad7d3ac91c362319a9ecfae61afcfdb5c69f1f83a6ce7c619726d201eb71fa4d1293a7b72f886105ba2964cd0aea34366af94ec79def1c6e68061a2857f34787fa010e6c43b447314410b98a64fbc121bfbf4c94929</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">PLEASE TYPE THE PASSWORD TO SEE THE ARTICLE !!!</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一剪梅·舟过吴江</title>
+      <link href="/post/8e74.html"/>
+      <url>/post/8e74.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天突然看到一首好词，其中一句怎么都觉得不通顺。查了一下发现原来那句 “<strong>秋娘渡与泰娘桥</strong>”应作 “<strong>秋娘容与泰娘娇</strong>” 更为通顺。“<strong>娇</strong>” 与 “<strong>浇</strong>”，“<strong>袍</strong>” 与 “<strong>抛</strong>” 分别对应。 “<strong>容与</strong>” 译为 闲适的意思。  “<strong>银字笙调</strong>” 中 “<strong>调</strong>” 字读<strong>tiao</strong>我认为更为合适，全词中都为一或二声。</p><p>最后全词如下：</p><font size="6" width="97%"><center><center>一剪梅·舟过吴江</center><center>南宋·蒋捷</center>一片春愁待酒浇，江上舟摇，楼上帘招。<p>秋娘容与泰娘娇，风又飘飘，雨又萧萧。</p><p>何日归家洗客袍？银字笙调，心字香烧。</p><p>流光容易把人抛，红了樱桃，绿了芭蕉。</p></center></font><p>蒋捷的另一首词我也非常的喜欢。<br><font size="6" width="97%"></p><center><center>虞美人·听雨</center><center>南宋·蒋捷</center>少年听雨歌楼上，红烛昏罗帐。<p>壮年听雨客舟中，江阔云低，断雁叫西风。</p><p>而今听雨僧庐下，鬓已星星也。</p><p>悲欢离合总无情，一任阶前、点滴到天明。</p></center></font>]]></content>
+      
+      
+      <categories>
+          
+          <category> 诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 诗词 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>回国日记</title>
+      <link href="/post/eb5e.html"/>
+      <url>/post/eb5e.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>记录一下自己的回国经历 11.29纽约——洛杉矶——广州 CZ328</p><p>2020.11.27日早上7点半从纽约出发，9点钟到了法拉盛的赵健生诊所，很快就做完了双阴检测，共350刀，需要提前预约，我是25号预约的。<br><img src="https://i.loli.net/2020/12/03/IGtbmuVv1nCTKWp.jpg" width="97%"  alt="纽约早晨的地铁01.jpg"  align=center /></p><img src="https://i.loli.net/2020/12/03/1UvLxHr9nCz4wqc.jpg" width="97%"  alt="纽约早晨的地铁02.jpg"  align=center /><p>赵建生的诊所igm为静脉采血。<br><img src="https://i.loli.net/2020/12/03/ce32YAFJPoiBlkD.jpg" width="97%"  alt="静脉采血.jpg"  align=center /></p><p>然后因为刚好赶上26号感恩节，普遍结果出的都慢，保险起见，又去了布鲁克林第五大道的carecube，事实证明这个决定非常英明。11点到，拍了好长的队，1点半左右搞定，学校保险cover200刀，最后只付了75刀。</p><img src="https://i.loli.net/2020/12/03/13k9rXRsFevUCpd.jpg" width="97%"  alt="carecube01.jpg"  align=center /><img src="https://i.loli.net/2020/12/03/uAYImdnCvGkJ8yR.jpg" width="97%"  alt="carecube02.jpg"  align=center /><p>carecube igm在下午三点左右出的结果，pcr晚上11点出的，但是它发到邮箱的报告大使馆不认，要自己到lenco lab网站上下载。赵健生诊所的到28日晚上10点才收到报告。</p><p>28号上午8点拿到绿码（提交太晚，大使馆过了0点没音讯了），给了43小时，还算充足。</p><p>29日上午，带着行李和打印好的检测报告踏上了归国历程。<br><img src="https://i.loli.net/2020/12/03/eXpA7OkdQ6aRCHJ.jpg" width="97%"  alt="机票.jpg"  align=center /></p><p>11点半坐delta的DL326从JFK到LAX，上座率很低，我是靠窗的位置，旁边没人。<br><img src="https://i.loli.net/2020/12/03/QxboOItD1RWyZL7.jpg" width="97%"  alt="座位.jpg"  align=center /></p><p>共计5小时左右，就给了一瓶水，一个饼干，一包薯片。飞机上没事拍了些风景：<br><img src="https://i.loli.net/2020/12/03/kDBpToz7CiuchHy.jpg" width="97%"  alt="美东01.jpg"  align=center /></p><img src="https://i.loli.net/2020/12/03/K1eU8MfuOmFZlJN.jpg" width="97%"  alt="美东02.jpg"  align=center /><img src="https://i.loli.net/2020/12/03/efLmKN5sWTbI7Q9.jpg" width="97%"  alt="中部平原.jpg"  align=center /><img src="https://i.loli.net/2020/12/03/2W9PsMzUyjwKQbf.jpg" width="97%"  alt="中部丘陵.jpg"  align=center /><p>洛杉矶下午三点左右到。然后就是漫长的等待，吃了机场的sandwich，味道还不错，叫EARL OF SANDWICH。<br><img src="https://i.loli.net/2020/12/03/TefunIVkvJ69aHm.jpg" width="97%"  alt="EARL OF SANDWICH.jpg"  align=center /></p><img src="https://i.loli.net/2020/12/03/TmVkzhGS9iu81b5.jpg" width="97%"  alt="COLA.jpg"  align=center /><p>洛杉矶下午5点左右开始值机，查核酸码，量体温，托运行李。我有一个超了1kg，让我下次注意。然后就是过安检，候机。<br><img src="https://i.loli.net/2020/12/03/sh3fmCIEizG1AwP.jpg" width="97%"  alt="候机厅.jpg"  align=center /></p><img src="https://i.loli.net/2020/12/03/zHVjMGJqOpPaDo8.jpg" width="97%"  alt="飞机上.jpg"  align=center /><p>洛杉矶当地时间23:00飞机起飞，航班上人超多，没有独立风扇，很热。好多人带了宠物，还有小孩全程再哭。15小时测了3次体温，给了很多吃的，但我就喝了一瓶水。<br><img src="https://i.loli.net/2020/12/03/jRO5B4xsgX8doMF.jpg" width="97%"  alt="零食.jpg"  align=center /></p><img src="https://i.loli.net/2020/12/03/enMm2SrxuQYiAft.jpg" width="97%"  alt="CZ328.jpg"  align=center /><p>北京时间12.1早上6:00落地广州，按顺序安排下飞机又等了1小时，然后是排队查看护照和机票并测体温。<br><img src="https://i.loli.net/2020/12/03/j6w34fdmDQ8O7Au.jpg" width="97%"  alt="测体温.jpg"  align=center /></p><p>然后是排队做核算检测，一个鼻试，一个咽试。然后排队过海关，排队刷护照，排队领行李。3个小时行李还没下完。还好我用带子缠了行李箱，比较好找。<br><img src="https://i.loli.net/2020/12/03/iG1ukDdTKWJLlhR.jpg" width="97%"  alt="行李.jpg"  align=center /></p><p>最后就是排队安排酒店了。我分到了黄埔区的丽枫酒店，50分钟车程，大床房一天288，三餐分别是15+36+36，可自选第二天可外卖，但必须在规定的时间送到。早上下午各测一次体温。<br><img src="https://i.loli.net/2020/12/03/LmKNqnljkv35aQf.jpg" width="97%"  alt="大巴.jpg"  align=center /></p><p>总的来说是比较顺利的，希望其他小伙伴也能顺利回国！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>腕带的系法</title>
+      <link href="/post/3c75.html"/>
+      <url>/post/3c75.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>如何将一个肩带系成腕带：肩带Logo保持竖直，右边肩带从上穿下再扭成8字型</p><img src="https://i.loli.net/2020/11/18/e54QZIHt2JrdxBp.jpg" width="97%"  alt="20201117_01.jpg"  align=center /><p>效果如下图：</p><img src="https://i.loli.net/2020/11/18/AFYNygSlDKOX4nC.jpg" width="97%" alt="20201117_02.jpg"  align=center /><p>最后附上晚餐麻辣烫<br><img src="https://i.loli.net/2020/11/18/MtDmLZguQeHTOz2.jpg" width="97%" alt="20201117_03.jpg"  align=center /></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 摄影 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 摄影 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>宿舍</title>
+      <link href="/post/68fc.html"/>
+      <url>/post/68fc.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div align=center><img src="https://i.loli.net/2020/11/10/TXdbyrweEKBqg2N.jpg" width="97%"  alt="DSC_1157_01.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/wejBEdXv6ilGbUK.jpg" width="97%"  alt="DSC_1157_02.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/Q9gMHJmlPZzIeTw.jpg" width="97%"  alt="DSC_1157_03.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/rcH81WiSe6C2gdD.jpg" width="97%"  alt="DSC_1157_04.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/4WgLsNbiT7UrjuY.jpg" width="97%"  alt="DSC_1157_05.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/4TfNGjFuOb3IMyX.jpg" width="97%"  alt="DSC_1157_06.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/A4NR1OfkloPcgwh.jpg" width="97%"  alt="DSC_1157_07.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/hOZTbpmU9K578HV.jpg" width="97%"  alt="DSC_1157_08.jpg"  align=center /><img src="https://i.loli.net/2020/11/10/35DoRu2abp8shtd.jpg" width="97%"  alt="DSC_1157_09.jpg"  align=center /><p>Good night, world!</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 宿舍 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2020大选</title>
+      <link href="/post/f072.html"/>
+      <url>/post/f072.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>2020美国大选于今日落下帷幕，从11月3日的特朗普领先，到后面的AZ翻蓝，MI翻蓝，WI翻蓝，到今天，PA和NV也变成了蓝色，剩下的GA也是拜登领先。</p><p>今日去ATT，路过顺手拍了一张，纽约的人们都在欢呼Biden，举着honk for Biden的牌子，敲锣打鼓，过路的公交车也按着喇叭来庆祝Biden当选。</p><div align=center><img src="https://i.loli.net/2020/11/08/VdLCmZXMRKIaHN6.jpg" width="97%"  alt="拜登290：214.jpg"  align=center /><p>人民举着 HONK FOR BIDEN 的牌子，过路的车辆也鸣笛示意。</p><img src="https://i.loli.net/2020/11/08/W6HvAgmGkahP9bJ.jpg" width="97%"  alt="HONK FOR BIDEN.jpg"  align=center /><img src="https://i.loli.net/2020/11/08/xlvWwNK7LGRQyJf.jpg" width="97%"  alt="Nikon z6.jpg"  align=center /><img src="https://i.loli.net/2020/11/08/6docY9NGemuQg53.jpg" width="97%"  alt="樱铃.jpg"  align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>生日快乐</title>
+      <link href="/post/afe6.html"/>
+      <url>/post/afe6.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="67aed7026c5f1b7c21a6ec12f5608c6ac677bd8779a9cb7dea626be9cb7a0200">b0cd6d9f314ce9cb1ee140b6941aa1aa8f9fbbde12757276c263335794f9e57a536acd27969e103ace75361fc78f4daa2fce10a2ccb41a3b563b8b6319f5ca2900bdb7ed4cec972b0b67610f7f2586df9c22266e04aad8f577de404a08028b650133a6f50b21eed383f93a340a8d97b92953f6d3f031a1d025b8f221a1c07758d98c9161b099d9290f5df54d14c1e9ead46cc850dfbc93a765e3e11d90b34d5fd3f2b6f8cabaf56b2443fda4170abf2cb709a9e1f98eb836d0707f7103ce4811d164b5a78e053a44145a5b253f561bd19f0f5555dc1aa5151aa15904c2d95510c86405e8072677df2f1bc518125a31a6c1d5064e05e2f6730031d98c4d52eea568e0a1b4d8d03e504a0440f9d0edb33ef4ec577418cad9959e0b51e21c0ed5b778d3dd4e5f0ed528eb0c77de7572b53b5681e8a0b17836df9a20467363e9d9a384b8e10aca666ccf790624c85dcfc9382076da65325e172dfe4d307d68342487025404fdf1e61ed7d0e432a1d644bb4d5ae3aaf5bdfdfcebaacb09e2d0845fc20dcf84f6b223af264ce47168e7d86f61e34c9a57b06d02cbadea9ee92d8a81435dee03457c309bf1d05a33175d6611d3fcb1ee6d0936f5db15062fd2da375e6eb42d437abaf78500b06304790b81b4ad49a9a0d03139ba4cd52159399e8a7a0d11ca2513dadfb1a8134caa5b89907d315af94ab3307ead35eed7bb90b16d63037e954bfc872e67de1cc6cb92fd028fdea76c937a49dd7ce6baf7cdb67de3ecf6bfd207ebe5c497d5370ec607773deeb49960ededd37281ec59418769de80242a0d30f6e3562728220516f49eb8cb81c673a3fb20211e7aedd083bdc252dd68b51b028aef284de8147d114bba68b488921290286c043931b60448964810b226a231c13a2933d5b34acfa0bea34de6ff47b788f02b6dda02876faf25d9d3f0ab4010c69078c40f45e065061ec373180a55c7e6e7445913a4c921284262dd4618682c50a193f6c4cf11e5264caf9813815be356258d1d8dff1e5d5584d7a96a4386699d061c9e7565f6a3450849c3c2a6b1c5b0acbc0eb7074a451321e8f47bafda9732112ff986abef70789d0e87b43d646b3c7686dc2666b40b92875d39962854456086b86c2389d5ad70cc069122e1f5a39a0c26e295f885fde3c604606a4a4c4f4cc6f1c80e61f2c74d0cedc9570af6554b8df09b0fc421d96826ae8743b24e613db1397710243b5670a53d8cb4cf4c5783dd6e552be69a2de3678862523edc01584584c5bcc59f0c4bbc960f6b666c274ea6d377529a3ceb3b7a3064b6306e69a4f621e076d066c26a22fdcb2d68c075bb00679d8092945e737284e464859b91c40f11d937e9d4aea9deff66e66f88330e0749df52e1d1492334de3cdf575a2e3144ccc125a164a080d9eaa5272933ef0df3fbf341cf58c726204c927cddbe506c50f033e9cea81416eaf138fe2042681175aa56197e39dfd8716a644e83a3ad3643787afacdde47405665018393b14c4a858cc93c91727d783fd43decd544db35d9daa4e5d4b0bcd5f73449f0282c83d11da90d2603431801395ed903e9a785cf271441beaa371c0b7944b2ad2a31c96eba6c27478b93179ed2cb783196d05c2db3036b672002ddf68ade12534d4ae826124f8682b5fbb3031ece8404da2e53dd9653aab027acb6306fbc7ec6c67f02f40305c76e6e5c9f2ece0ef5327cae044561501f521f32c4082959aea7d211</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">PLEASE TYPE THE PASSWORD TO SEE THE ARTICLE !!!</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 节日 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>秋日随笔</title>
+      <link href="/post/3ee.html"/>
+      <url>/post/3ee.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="10d4d618c399ca4a71f7c0f30cdcecee2dc034b843c3642e4d3254703ea364f5">b0cd6d9f314ce9cb1ee140b6941aa1aa8f9fbbde12757276c263335794f9e57a536acd27969e103ace75361fc78f4daa2fce10a2ccb41a3b563b8b6319f5ca2900bdb7ed4cec972b0b67610f7f2586df9c22266e04aad8f577de404a08028b650133a6f50b21eed383f93a340a8d97b92953f6d3f031a1d025b8f221a1c07758d98c9161b099d9290f5df54d14c1e9ead46cc850dfbc93a765e3e11d90b34d5fd3f2b6f8cabaf56b2443fda4170abf2cb709a9e1f98eb836d0707f7103ce4811d164b5a78e053a44145a5b253f561bd1906525f840dc14066bc2cdf56cdf369fce64fe55b2b95e534d9e040e14f22b3abfc6784a354dfc53f8e5ecbbd1e5c526bad680b548d19856268d89518bb5659f4a1bf31eaf04774e573e9e1b0fc5b46964211d3538d540e0cb1a2e1bce1b93386625291bd919f8bbf691ae089576525295a49655c05b070c0222e83fff99cd0f1225cac7a637c58e7a15ce9a2a3f6ea1ff89316668909f1416cb0ffb9954571f9ad3e81ca5a650aefd98dc57f8652b237bdbcf52314944ca4a304ebea6a71fa273502e5e05955698d9455c5f120204bc2c0383bacaaf5dcd9c15a1e67b3e3b54e79a65c7b8d765b693d9da22ac3550bde81b34c88e364bdd11075f2cdb2007807bec1bdb11fa880d33b373d03668dc56bd80cd1f81d5445269ded7972a6eec92986b9ed26e8c7b7f08499269c092b19a89440233637f9bd5541b43a61f24d34f763fe5b55eadf262d185908a8114b3a60f3f5fc22c6fe8e3f59f4542f340a2e25c95064927ffffefa89f1634e16d724502f5fcd7a5cfddbb6fe6ff06ef4f407ca8512085b6d681f11ce91451279354d11f85122b20f5eed8d3ef2e3338d747bb75cf5a55be479de0d40caecf0bae5d5db8f2dfd37837c1fbc01dfef71e4bf04c0f1c9e55879741107856318711d84cd50f7a20a14df0ef9c32a58bdab6a274585e32445d2bac1a26690100cdf01d1c69706580accd7607147a29a4da60a62c268a5f17ba7cff2828884d154f7f1d4bdb872b5b156251defb3091acf9623de973a108863b05cd42e5fef5915406b115a144c4dfc645877bb02d848f322c50020921affe1c37aaa7cabaa07e7e94bd79a1604569a70a7e5a6b25779a804339904df4df8fc908135fd8dbcf331f76f87afefefdc6d2f71870da9d01a04ed92d25100bb6dc042eea9e5ad4bb3025be5b966d2c3e55717519e142fc4e3fd5afb8c5345095f1ec374be51c95b5259cb5afab30b1596114d937560f0fad4dcf84c7f975566ce90012dbe7bfe1012b3f83c7e3c5902a2449eb1db7a8867530a8a373ecd8476a7bc279f50e8454f03c924a13b9d60e3ed92a493f1c99ec8b9b3d5451b428bf27c200d99cb14d07b238faea48d2ea4e76db229fff27b27f3e98d7bb37fb13e9e44adedc12763b4ae4be75066884037d91a5aa368ff388a32cec24cbc964f0451a78d3735d7c9c97d50626b0db7844fd1fa1ef22b3c638a4fc882960b62b27bc5aeb77d0a835ca5046331390c3c2f093b14d2a7bbcbc186946703726637a6682654652459dfede123ab2cad6eb39f8ffe9b110c0d74bce6512b211a09811077cd28ff455e2e349db3a8808029235399cfd333fbfa7076269c9143ee036f0b2b5ba38e33bcf0ee8d1ffbf2e16e5eab0a339cf74655c10c3cd68ba84ed368f241975da26f3de7fa77468b30c1dc58a43b7ae41c300de1a861296337d4f6e6a734f748a27a908514a3f6effb8da9f46a70ec2bff9032e0fa4e3f8fdc81bb7c74b0999730e99558200d9939becfa2d3ac273e2afbd5b5986048c8e245afb7c7e5d07ed10d2cf92553052dc95313ef8d252a64a96612747624f4daf9a276c8b6461a3d466690ed0d40edcb58a627d64c1cf9678898cab5871a506975a68641b910f7de97545b53209434ef457a97e28eb64f36c76b79d26f961eca929c86a0a1b2eecc84fc5f03d630430755627d4bdfe2e1d20a11aea41f09bc7106c033dbb9dc4a148c2d4a8a122b511d8e61e31c6b90c12078eeec07bb5d0f63649f726752494006f6cdc00a640260b925bbd60aeb4427dfd7416ea8684767e1abfe9d7604a340f4c0540044afda4b8c1e3b4c2512857470f003616a25ba02a3313c32058720eb489c9bf7b238d7a44645464ba59088afb25b792abadbf13fb0c46c0fb277b5183c29b43c2898930f2d2a51e7d114232669a385c502a93ce1f5218d9f16f70e797970f76a537dffbdbcf94978da7d38d10bee83ef70b7316630ef1affec3e5fcf1a8adcfb5ce8fc7c2a8321ddea83502e97da5bf1afda70341472ee64112583110a7a5e350343ff2dc4aba835cde019883eb79f1ed4ee6ce946f1018581646306189d9fdee01b81b9b2e34ce9006ed26b11e62c9a6eac586d12fe021fb0aa5aca6f392555acf737e4f1409b92b64d46e92dd33622c7c1120791b4522e11389f80059464734b032f586a3d0705d7176fdd61e39ba010b58d5ef0f96080ef849168b27e96f6ce6f88a2f16bf2e345915da29d1c0d195c445f957b232d25f8963a6b167747a24f30f702c96f7adba34d3afe39dbdc3c5c6c4cd9a5441be7358d3fe21b7fd5a6dd49649263d645e14409ae6106f7837ddf0e7b937364c7fd4f3fd9468286d8f41b3ab047edb739904e58362bd585a9f9784c6f560da222c740c98eebb7f74d14569670ff8b75c33d212dac21ebd76482abf6f5a6da2d49c2b0e17a4076f7e15ce1f910823d82067320e93921f6b77be87cf923bc3048fc822ed5f4498c233c756b5b39778da7895961caf830d00ba87cff38444887d48996ae4b7d67de763f6ac9e5c71fec1cbb398406f5f2ef4b6f5c53c91c77de97be95b270af88dabd01ba1241ed7a1368ef89ca8b666304660095461432175c564e9fcd79fd41d680375135cbc98dbfe92c96838cc32fadec25eda3986f2eb21f211ab26cc69a57027f60f92b049ef43eb6f21e6e4106a06e7166769a1217322d0d65c7287ffa57006a94bb2d14eaaede671b6482019f80d56e1da1d488829e93e97cef7361ec5ac2336f05968ec05bcd458fb0ad5b281f68d3844c5598ebc7ae7c61f6a52788a67eeb83720c6d76b9a8e5e30e53a12a20fcaa284e19562107e3e2dc8e346e05581bc901eebdec25280cd82365766b985ed7b6015f000bc06503231851f61aae9c3b557b03bf73c4add44f8a3e6c788c1d83eb3a50598a84bc9b84264e6703e8d398696d81b3dc7428ef7737cbbf0c800d63a1967da0cb97f433061fab44b70c98781e646648ff6c26801f3642976094666c0ff47ade190fd0bad2b9efb21e6c093d17da49a2f55876659372a22b6789a82731dd3fd7827b0d2f0bba0c971caef48787013be357aa682efa96badcb0c1a520ea74e01411bf6ec421fcf86893fb16d0cfa5c4c80a1c754fc3994cab6576b75a4e1fdb906f5f2ceb9c0caea8bd168af55bc107578e86168447aac88dcb135593f83b6bb4b4bbb43d64169b0e6e63577d957309712d2b688c78a5f2b028631274628c6c805991c19a245e8d6aacbcc69abf25ecb11aeb2c022cb285c7003264a014ff750586acf70b6a1e52a6089f5fd7be2029e50acccc8988b14422e1a062a54766f5a3b56c609c15f0ac61fa7e86c417e0ff472c1b2be622206e96ae12293f51e139b977d51c6d638a4cc2da86e45caf98d594bd2545045a5d06ebf145932207cc965af6c36239409dfb6b79337f6cb80035e61e4b33fa4cd3cccf5b40b28d5f212f41c7ad2389689129f359578ca69bc428db66837390b6f7026b95f37897ce6f2c7d4266516c4570842f5b9c2796e823bdcf55eb8bf96a9dfe3ee160bc722526e90a87283ac820e2c4ee7548e5198da71f01e70a430adb22937466f2da905ff4f581c7237d25c0fc020f042ceed11aa29ca6441c3a1d88baf000a7f63a8120ea4e49a3ddfc05ebf8d356da1877a7ce7917a4f199bf5b74c1a8985139a5abd36b4a7228410d7897aa02e6fca3090990136f59f30ecff58f066e533b9321af5148ee016b69d234dd775f6a81983e733b18903386189476b7b968d1ac40ea8c5b3109610d4ace37a8f5bcbafc7985a423a9163371108edaf87d3a1ad674d6bbf9bb01dd3e14f890976f924539975ad7aa71948951d2b2e1c480c2e2a46ba3c8985dd6389e248b836ab522a090c2de2ceeb1db78cd03d40f5a02086093004acb8460e61810bf037ac9ef9e9812cbe77fc0d250688e1adbf8257a3aac44c46b6251239122619c51236f053bab3e3d1c795ceb0e63657cc76778102ce397de58fe2e695854b51ffcf0614ed98e4dd29983ab846f5c5870af8411ed880c8fb048ddcddd07e85108c066b6d011638e4adee7c1433e7c7674f9eec4ed9d1a6be56f7d67e6c8a9bbf98ff6dd06bca2a50bff50194366e5326e8da1a14487d501fe187caa9a63e1db93588400a6e1e70c1e3923249132d3a8327a4cc400f4f15cc714e22b2bb06170b6930d795cca866b856b60bbf1c871f1acef317d912af994fdb3a3e2903a60d43677ef0c495142fc8d96421e6dc1b734bf81ce5246c4142bf7c357ad144626ce01c49e86f5abc36f1e2b57a646642cf36d8c49200c70ae43da46915850bf286742497dce56f7d6fad3fc43bd5ad0060e56d31043fd0ed3dbadb3a88f9184c2458f2392ad67603522e30cbe32f49950291ef985ae52a666eb71010624afd27ee3eb13a894b91f0534df4bf555a2c8400c59310f9bc7e11e311317950160f27d96e74b19417c8a818e5fe510785c8e7d9730246e6773efb31d1d1a14956645e9575cd7c3a64a722b0186b19cb0c7f8548366fa5f4fae03c143995882084c86ba1e49a7d4dc0ef643350f8449a6805d3d942f6ddd7cc2a3f8432c2cb9d895e2b62ade105d34042851fcb3538131b8a81cbb0d9ec77e7bc8a3a6a54c07c2deb3c3ad763da6164b82c27b1708ca43df9b2c470849a7d06975e1828b2bb8e8b39fdcad000d59bba00b5859ca8165c6fcf07e69ef235e835dc4273a707d7276efe0ff57fe6ffcb349637bc9c0a7f02f1f23e4e45c528ba65c6ac171a6d0a2253493f39f30b92202734ab8f40e5b993e69728f65f6ad78d1e179217d04026676b6b551ffa8813a2518f41b3e7df19fac69899a46f608ab4fd05be8f0c7adcc079e1e5bdd94ee3e1b8328678ee0cfad7ec6f1f93a4d317b7c3e7ee972bd1a845f7bc965364aa97c641d8e54c25e2d1fd251bef57267445ff4e735d95e13f0b850322fb0859f24c4840f3d5c51dbec989cf41d476e4d5c2bb4995958ea1af5c54c6b21c1260713a70bd3a191e48df461361590615bb4291137013d91a58dd5058978fe9a95634144c2e27cc69a936fdf52d5a9d49116745dc0e4dc0184163aa912a14b8fe71aaae19276690d9b716e99c3e563ccb59a01ed6167458b92778b4334b2266bafc449f3b74d60c3b60c12612d7f4b47452ef65637b9ce9313303432cc3b3fc4076a433e5c1be0e03acc5c5b0f5da887768ff215d225d7dcdc8011182bf9e0e6b739b7fe69facce96aba58d1572df95fbb81c0acf47bbdfb8f7e305915b09952dba482ff1050c978c02bbb10290447b3369a144e3a08e0c10d922aea316056ea8fc8d902fc1aaa023acb606eb08c11806a2192d7a8ad8d6ee30</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">PLEASE TYPE THE PASSWORD TO SEE THE ARTICLE !!!</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Sieve of Eratosthenes Agorithm</title>
+      <link href="/post/e509.html"/>
+      <url>/post/e509.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>埃拉托斯特尼筛法是一种用来找出一定范围内素数的方法。<br>例如，如果要输出2到100内所有质数。<br>具体算法是先把2到100全部放入一个数组内，并标记为true。<br>然后divisor从2开始增加，<br>对于每一个divisor，例如divisor=2，则，4（2×divisor），6，8，10，。。。到n，全都标记为false，<br>然后在divisor++, divisor=3, 则，6（2×divisor），9，12，。。。，到n，全都标记为false，等等等等，直到divisor×divisor＜n。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.<span class="property">util</span>.<span class="property">Scanner</span>;</span><br><span class="line">public <span class="keyword">class</span> <span class="title class_">SieveOfEratosthenes</span> &#123;</span><br><span class="line">    public <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span>(<span class="params"><span class="built_in">String</span>[] args</span>)&#123;</span><br><span class="line">        <span class="title class_">Scanner</span> scanner= <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="title class_">System</span>.<span class="property">in</span>);</span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot;请输入一个数： &quot;</span>);</span><br><span class="line">        int n=scanner.<span class="title function_">nextInt</span>();</span><br><span class="line"></span><br><span class="line">        boolean[] prime = <span class="keyword">new</span> boolean[n+<span class="number">1</span>];</span><br><span class="line">        int i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            prime[i]=<span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int divisor =<span class="number">2</span>; divisor*divisor&lt;=n;divisor++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prime[divisor]) &#123;</span><br><span class="line">                <span class="keyword">for</span> (i = <span class="number">2</span> * divisor; i &lt;= n; i = i + divisor) &#123;</span><br><span class="line">                    prime[i] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prime[i])&#123;</span><br><span class="line">                <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot; &quot;</span>+i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>羊腿+土豆丝</title>
+      <link href="/post/c2e6.html"/>
+      <url>/post/c2e6.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天刘老师做了羊腿，我炒了土豆丝。土豆丝想切细真的不容易，我切的大小不均匀。做法要先把切成丝的土豆丝洗干净，然后热水焯一下，20s钟，然后热油，下花椒、蒜片、辣椒；再下土豆丝，炒1分钟左右，下白糖、盐、生抽、醋（老抽）、葱，搅拌均匀即可出锅。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/Vmr7n8j6tpfFuQh.jpg" width="97%"  alt="羊腿" align=center /></div><div  align="center"> <img src="https://i.loli.net/2020/10/28/xSdQoYl5RGTIJp2.jpg" width="97%" alt="土豆丝" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>红烧鸡翅</title>
+      <link href="/post/9642.html"/>
+      <url>/post/9642.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天做了红烧鸡翅，用的是海底捞的麻辣香锅火锅底料。步骤嘛很简单，先把鸡翅焯下水。然后热油，下辣椒、海底捞火锅底料、蒜泥、花椒。然后把鸡翅倒进去翻炒均匀，再加生抽，酱油，继续炒匀，加水没过鸡翅，加糖和盐。水烧开了大火转小火，40分钟左右，出锅即可。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/bVui8cHXRkvrgYC.jpg" width = "97%" alt="红烧鸡翅" align=center /></div><p>这两天在调整自己的作息和锻炼身体，每天早上6点起床，冥想一个小时，然后下午在跑步1个小时。</p><div  align="center"> <img src="https://i.loli.net/2020/09/16/GsDzjxbRluWhJ5q.jpg" width = "97%" alt="跑步" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>红烧排骨+杏鲍菇炒肉+菠菜炒蛋</title>
+      <link href="/post/c7fc.html"/>
+      <url>/post/c7fc.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天中午吃的是红烧排骨。晚上新买的菜到了，就剩下杏鲍菇和菠菜是上次买的剩下来的。晚上把里脊肉和杏鲍菇切片炒了，里脊切薄片，加生抽、盐、食用油腌制一会，然后下锅炒一分钟以上，加些许葱花，白糖，下杏鲍菇，炒至杏鲍菇软，加盐调味，出锅。刘老师做的菠菜炒蛋，全部吃了个光。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/ZbewmyRn7TqNQaI.jpg" width = "97%"  alt="红烧排骨" align=center /><img src="https://i.loli.net/2020/10/28/v9JeqKG2PiQjI53.jpg" width = "97%" alt="杏鲍菇炒肉+菠菜炒蛋" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>炖羊后腿</title>
+      <link href="/post/fd23.html"/>
+      <url>/post/fd23.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天面试了帝国理工的DR Emilio 和 DR Hong， 感觉自己有些知识还是记得不太牢固。问了好多好多基础性的问题。例如K的单位，Tensor，应力最大最小，strong form 和 weak form的推导， 由displacement 到应力的推导等等。</p><p>fresh gogo上买了3斤羊后腿，焯水、料酒、糖、葱、姜、洋葱、花椒，高压锅30分钟。中午炖的感觉不太入味，下午又慢炖了4个小时，哇，晚上再加了胡萝卜、蘑菇、白菜，那个肉入口即化，汤还带一点甜味，太好吃了。</p><p>米饭少了一点，刘老师还贴心的给冲了麦片，完美！</p><div align=center><img src="https://i.loli.net/2020/10/28/cBahkLjvwKMmru5.jpg" width= "97%"  alt="羊后腿" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>七夕之夜</title>
+      <link href="/post/e70a.html"/>
+      <url>/post/e70a.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="94e74888e8fa713200b460d29bf1309ba41d211694cacdd81430492e9c8cd359">b0cd6d9f314ce9cb1ee140b6941aa1aa8f9fbbde12757276c263335794f9e57a536acd27969e103ace75361fc78f4daa2fce10a2ccb41a3b563b8b6319f5ca2900bdb7ed4cec972b0b67610f7f2586df9c22266e04aad8f577de404a08028b650133a6f50b21eed383f93a340a8d97b92953f6d3f031a1d025b8f221a1c07758d98c9161b099d9290f5df54d14c1e9ead46cc850dfbc93a765e3e11d90b34d5fd3f2b6f8cabaf56b2443fda4170abf2cb709a9e1f98eb836d0707f7103ce4811d164b5a78e053a44145a5b253f561bd1a73f7b737736ad40e488bd3cfb8ecd0c8049d72e1834e0d8b5c63bda88ba5b20a4020050c6520453fcc0707651691e0fa99504315d3cd092a14fbf1feb960895c1d25e664045d1b1239b93a7947a254484c99e5ce011871939c6025e9b3b0bb9fb265248c746762cc64c0441452c74a41c23e65c346ae3ca79dfd5ed184d88fdcf32f61dfaddafbd1bebe6399294aa8e985c13d9e7ede9bc53f36a334968c64d75f0ac6b97028cdf4fe103f4798d60531b4099cc734599fd6c4f6b1d70793948f3e4e54a566a30dd24667edeb5171208f575a8e5a692a4e5c4241c9c9ca223afd5e1897bec0344a11e7ca5499973cc1c520a38acbdb625ec91f54665aaf04f30bece844211799d1696a02df5b69bc4e9191a979cc0cbcbbd3cb7697c92ae85557d7e4e32acb7ed80b3e8fd0f341f982f9a5c3f9dd87184c4b11c199e5104523604765b5071400880973589af9df79cb9e10bab07c88e2b877f077556127e3bf5b100af6906778c1f018f532d74e84700c15daba6b14de3f6f16ca7a28cb88d84079aac20679dd62dcdc4e8a9a6cbd4a409fe30e858d94c6e0d92a36da0a3fc11fa0c979b9a1adca3e721f3936c26b0ef1a6f5f75e7a238984a7fd8429000dfe06cdbc3c3c42c6e2278ee898b2e97c89dad9cdc321d6f133c1f7ceed2ba58086762a5fabba5e44f2d3ed8ad3fb173586b26fcb3dd02dcc890bee12f42c853134d8345c1f1aa407b5072ca832ce3e1595e98d9997bd5e23e450ac52fc9b438672a6e1f90b7fed1141c82543dccdc81455e09e3a248ca1b71f88bc3cb1c7c8b08eaf3d9987d10dc81ea1e89b2650a894f4307c5d842cb80b3547d28a4e7489e74718ac639768535c95ee060344c19a3ab78ac186ab33e1fc2a94b8db745a6c7521a2f2d7936d9ed945ecfd462d4dd22564a735f9723f265fe8e7f2ed75ea3ac9517a4b70759329a35ff1a6e7265de8405c82a4de058640bf8ec6a2ff1e67a92a4b7aead851b2959aec038f230e642e265b3d0546c5d4c48ab0cc3902090a57b0f3e5106119f6d52ddfbb038d58c2c6dd6e02f73892d8239fd0f16bf5b4b09545c1f35f5d33638f4c7148fc2d81643ac56864fd404fcf77557b41113d0bac35c22672528d49e1b893d407ca91e462c11ad8d7c3b9e7ac6d74779d5c5e1b3fb2c0ed6590b7df3e40b4d7ca5af2bf914a1fb5324bd3dd44bbce9cef38f6b84d024a9d314ef502a400ff677428f1b9dc24c3922ee719400e4bfc5ced7d0d502fea56959bb5bf282b22b7e3bb33d7e556a9ca15ba754bab5d2ece6f53c7e1c5673488b5a45e91825e6259411844ef9f5c58ea4dee34fcc734b3d9187dd942fec702ccd30768fa133e471906ce5d9964aa0394029756e7917d9e1ef7f019ce1d091e81e5b35c11556fa85989a728bb47dddc6f14f728be9e51cf3db84214510878ddd3f1683f34343ff63750282e83f13cff17651081f1cdef2988396bde25fb12fe5d3efa82feabfe29054bedb56bb3e32768a3e3e27bed343c0d8a7322d143e827bb6a79b4911487742a3d548be01dbc1831fd86f74d3e8ad78841934581e5a78503495bee66837c28255b3f48b31c5262152bff6383e72aba4303c7a0e32126c18e516ff45c82d6133dc848008667e611fb831c05137848a10fc8d4211517a894ea65aaae3e3f95e2c79da8f0876369c2cb1794878b80758c31e6677393c5b9abf5a1ec3023ce0adde7cf84dbd160e747fbca12af0170ec240da3fa985e68948c0a6c83e2e50690a55fb3082d533005a63b075</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">PLEASE TYPE THE PASSWORD TO SEE THE ARTICLE !!!</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 节日 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>红烧鸡爪</title>
+      <link href="/post/7a15.html"/>
+      <url>/post/7a15.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天刘老师做了红烧鸡爪，鸡爪焯水，水开后5分钟即可。然后热油，下白糖，中小火，下蒜末、辣椒。 把鸡爪放入锅里炒均匀，加生抽、盐、老抽、料酒，炒均匀让鸡爪上色。然后加水没过鸡爪，水开后转中小火，30分钟出锅。</p><p>今天看了下fresh gogo上面的肉、菜都比chowbus便宜，果断下单买了一波肉，唯一的缺点是配送真的慢，周五才能送到，试试看吧，如果肉新鲜的话那就一次多买点啦。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/ZVIEXP4vDMWx3KL.jpg" width = "97%"  alt="红烧鸡爪" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>水煮牛肉</title>
+      <link href="/post/8936.html"/>
+      <url>/post/8936.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天做了水煮牛肉，肉是牛腱子肉。先用清水泡了几个小时，然后焯了水，再切成大块，再焯一遍水。下锅，加调料，我们用的是<b>白家沸腾鱼调料</b>，高压15分钟，加萝卜，大火15分钟。</p><p>刘老师在Amazon fresh上买的水果也到了，买了香蕉（我已经吃了5根）、橘子、黄桃、蓝莓、黑莓、草莓、苹果、哈密瓜。</p><p>做牛肉期间我水果就吃了半饱，但牛肉太好吃了，感觉自己吃撑了，称了一下70公斤，还可以。我们还煮了6个鸡蛋，准备剩下的牛肉汤卤鸡蛋。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/agcu5fCHALSYZKD.jpg" width = "97%"  alt="水煮牛肉" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java IO classes and Objects</title>
+      <link href="/post/81c7.html"/>
+      <url>/post/81c7.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Objects in System class for interacting with a user:<br>System.out is a <strong>PrintStream</strong> object that outputs to the screen.</p><p>System.in is an <strong>InputStream</strong> object that reads from the keyboard.</p><p><strong>readLine</strong> is defined on BufferedReader Objects</p><h3 id="How-do-we-construct-a-BufferedReader-With-an-InputStreamReader-Compose-into-entire-lines-of-text"><a href="#How-do-we-construct-a-BufferedReader-With-an-InputStreamReader-Compose-into-entire-lines-of-text" class="headerlink" title="How do we construct a BufferedReader? With an InputStreamReader.==(Compose into entire lines of text)=="></a>How do we construct a BufferedReader? With an InputStreamReader.==(Compose into entire lines of text)==</h3><h3 id="How-do-we-construct-an-InputStreamReader-With-an-InputStream-Compose-into-characters"><a href="#How-do-we-construct-an-InputStreamReader-With-an-InputStream-Compose-into-characters" class="headerlink" title="How do we construct an InputStreamReader? With an InputStream.==(Compose into characters)=="></a>How do we construct an InputStreamReader? With an InputStream.==(Compose into characters)==</h3><h3 id="How-do-we-construct-an-InputStream-System-in-is-one-Reads-raw-data"><a href="#How-do-we-construct-an-InputStream-System-in-is-one-Reads-raw-data" class="headerlink" title="How do we construct an InputStream? System.in is one.==(Reads raw data)=="></a>How do we construct an InputStream? System.in is one.==(Reads raw data)==</h3><p>Figure this out via online Java libraries API-java.io</p><p>Example1:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.<span class="property">io</span>.*;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SimpleIO</span> &#123;</span><br><span class="line">public <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span>(<span class="title class_">String</span>[] args) throws <span class="title class_">Exception</span>&#123;</span><br><span class="line">    <span class="title class_">BufferedReader</span> kybd = <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(<span class="title class_">System</span>.<span class="property">in</span>));</span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(kybd.<span class="title function_">readLine</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Example2:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.<span class="property">util</span>.<span class="property">Scanner</span>;</span><br><span class="line">public <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">public <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span>(<span class="params">Strign[] args</span>)&#123;</span><br><span class="line">    <span class="title class_">Scanner</span> scanner = <span class="keyword">new</span> <span class="title class_">Scanner</span>(<span class="title class_">System</span>.<span class="property">in</span>);<span class="comment">//创建 scanner 对象</span></span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot;Input your name: &quot;</span>);<span class="comment">//打印提示</span></span><br><span class="line">        <span class="title class_">String</span> name = scanner.<span class="title function_">nextLine</span>();<span class="comment">//读取一行输入并获取字符串</span></span><br><span class="line">        int age = scanner.<span class="title function_">nextInt</span>();<span class="comment">// 读取一行输入并获取整数</span></span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot;Hi, %s, you are %d\n&quot;</span>, name, age);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>珍惜生命，预防猝死</title>
+      <link href="/post/4fbb.html"/>
+      <url>/post/4fbb.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 猝死有明显的强烈的征兆。</p><h3> 猝死第一阶段-抵抗力降低 </h3><ul><li>一些平时觉得无所谓的环境，开始令你感觉不适</li><li> eg:地铁内的温度，办公室一成不变的空调。</li><li> 对温度比平时更敏锐，知道自己很容易感冒生病。</li></ul><h3> 猝死第二阶段-身体机能变差</h3><ul><li> 运动量变低，明显觉得活动后没劲</li><li>在常规运动下，出虚汗的情况增加</li><li>长期精神萎靡，偶尔休息一下也恢复不了</li><li>开始处于亚健康状态</li></ul><h3>猝死第三阶段-心律失常/眩晕/大量出汗</h3><ul><li>熬夜后，有明显心跳加速、心跳过缓、心慌的情况</li><li>有时还会伴随间歇性的眩晕</li><li>身体底子不太好的人，还会出现发抖、大量出汗的情况</li></ul><h3>猝死临门一脚-胸闷/胸痛/呼吸困难/肢体麻木</h3><h4>患上猝死率极高的冠心病</h4><ul><li>常规活动后，有胸闷、胸痛的感觉，你坐下缓了一会就消失了； 这是冠心病的警告</li><li>进一步，静坐时心前区压榨式疼痛，伴随呼吸困难，大量出汗；这时你的身体岌岌可危，每分每秒都有可能猝死，这是最后的极限了，没有商量的余地。</li></ul><h3>怎么办？立即舌下含住硝酸甘油，然后去医院</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 养生 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>红烧乳鸽+醋溜白菜</title>
+      <link href="/post/83df.html"/>
+      <url>/post/83df.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天刘老师亲自下厨做的红烧乳鸽，肉少了点，但是特别香，比饭店吃的鸽子肉多。毕竟是足足<i><b>18.99</b></i>刀的乳鸽。</p><p>谷大佬说我炒的醋溜白菜很好吃，一盘不够吃，又炒了一盘。主要这个白菜不是大白菜，我们三个人2颗这个所谓的皇帝菜刚刚好。</p><div  align="center"> <img src="https://i.loli.net/2020/10/28/tH1vA32qY46arUn.jpg" width = "97%"  alt="烤乳鸽+醋溜白菜" align=center /></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 美食 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>帝国理工面试</title>
+      <link href="/post/71ae.html"/>
+      <url>/post/71ae.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天收到帝国理工的面试，教授DR.Emilio的网址是<a href="http://www.imperial.ac.uk/people/e.martinez-paneda">http://www.imperial.ac.uk/people/e.martinez-paneda</a>,</p><h2 id="项目组-Computational-Fracture-Mechanics-at-Imperial-College-London-UK"><a href="#项目组-Computational-Fracture-Mechanics-at-Imperial-College-London-UK" class="headerlink" title="项目组 Computational Fracture Mechanics at Imperial College London, UK"></a>项目组 Computational Fracture Mechanics at Imperial College London, UK</h2><h3 id="General-Description"><a href="#General-Description" class="headerlink" title="General Description:"></a>General Description:</h3><p>Applications are invited for a PhD scholarship at Imperial College London. The project will involve the development of novel computational tools to unravel engineering challenges across disciplines. Specifically, the student will develop finite element-based methods for modelling degradation, fracture and damage of brittle and ductile materials. Often, the environment will play a fundamental role (chemo-mechanical fracture), and the work will involve modelling the multi-physics nature of material behaviour.</p><p>The student will join the Mechanics of Infrastructure Materials Lab, led by Dr Emilio Martínez-Pañeda. The group is part of the new Centre for Infrastructure Materials, created and equipped with £5.4M from EPSRC/UKCRIC. The student will benefit from world-class facilities in an ambitious and competitive environment. The PhD will be based in the Materials Section of the Department of Civil and Environmental Engineering. Besides, the project will build upon existing collaborations with leading academics in the UK and overseas.</p><h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement:"></a>Requirement:</h3><ul><li>A good Upper Second or First Class Degree (or International equivalent), in engineering, mathematics, physics, materials science, or other closely-related disciplines.</li><li>Solid and verifiable background in Mechanics of Materials and Finite Element Analysis.</li><li>Excellent English writing and communication skills.</li><li>Knowledge of computational fracture mechanics methods, such as phase field fracture, cohesive zone models or the like.</li></ul><h2 id="Selected-Publications"><a href="#Selected-Publications" class="headerlink" title="Selected Publications"></a>Selected Publications</h2><ul><li><p>Kristensen PK, Niordson CF, Martínez-Pañeda E, 2020, A phase field model for elastic-gradient-plastic solids undergoing hydrogen embrittlement, Journal of the Mechanics and Physics of Solids, Vol:143, ISSN:0022-5096, Pages:104093-104093 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022509620303276?via=ihub">doi</a></p></li><li><p>Martinez-Paneda E, Wright L, Díaz A, et al., 2020, Generalised boundary conditions for hydrogen transport at crack tips, Corrosion Science, Vol:173, ISSN:0010-938X <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010938X20305345?via=ihub">doi</a></p></li><li><p>Kristensen PK, Martínez-Pañeda E, 2020, Phase field fracture modelling using quasi-Newton methods and a new adaptive step scheme, Theoretical and Applied Fracture Mechanics, Vol:107, ISSN:0167-8442, Pages:1-13 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167844219305580?via=ihub">doi</a></p></li><li><p>Martinez-Paneda E, Ivan Cuesta I, Fleck NA, 2020, Mode II Fracture of an Elastic-Plastic Sandwich Layer, Journal of Applied Mechanics-Transactions of the ASME, Vol:87, ISSN:0021-8936  <a href="https://asmedigitalcollection.asme.org/appliedmechanics/article/87/3/031001/975667/Mode-II-Fracture-of-an-Elastic-Plastic-Sandwich">doi</a></p></li><li><p>Martinez-Paneda E, Harris ZD, Fuentes-Alonso S, et al., 2020, On the suitability of slow strain rate tensile testing for assessing hydrogen embrittlement susceptibility, Corrosion Science, Vol:163, ISSN:0010-938X, Pages:1-17 <a href="https://www.sciencedirect.com/science/article/abs/pii/S0010938X19316464?via=ihub">doi</a></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 面试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>薄小胖的一天</title>
+      <link href="/post/d292.html"/>
+      <url>/post/d292.html</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="32b9e75875acdf18a5e190dd57db75d4e2b3c04b772aa83cca6132f6d19d6a5b">b0cd6d9f314ce9cb1ee140b6941aa1aa8f9fbbde12757276c263335794f9e57a536acd27969e103ace75361fc78f4daa2fce10a2ccb41a3b563b8b6319f5ca2900bdb7ed4cec972b0b67610f7f2586df9c22266e04aad8f577de404a08028b650133a6f50b21eed383f93a340a8d97b92953f6d3f031a1d025b8f221a1c07758d98c9161b099d9290f5df54d14c1e9ead46cc850dfbc93a765e3e11d90b34d5fd3f2b6f8cabaf56b2443fda4170abf2cb709a9e1f98eb836d0707f7103ce4811d164b5a78e053a44145a5b253f561bd1aae54d44d59bb092cde7c281cc486b4273fc91cc560f3619348f432b956ae8bafbbc83f68d489aa70efa71cd35bf3d2b</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">PLEASE TYPE THE PASSWORD TO SEE THE ARTICLE !!!</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 日记 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
