@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>test my workflow</title>
+      <link href="/post/400b.html"/>
+      <url>/post/400b.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>How to use git in paper tracking</title>
+      <link href="/post/7270.html"/>
+      <url>/post/7270.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>把 developerFolio 里的build文件夹发布到my-website的gh-pages 分支</title>
       <link href="/post/2fbd.html"/>
       <url>/post/2fbd.html</url>
