@@ -113,7 +113,7 @@ theme: melody
 deploy:
   type: git
   repo: https://github.com/chengmateng/myblog.git
-  branch: gh-pages
+  branch: release
 
 search:
   path: search.xml
